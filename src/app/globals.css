@@ -1,0 +1,289 @@
+@import "tailwindcss";
+
+:root {
+  --bg-dark: #0a0a0a;
+  --text-white: #ffffff;
+  --accent: #f5f5f5;
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-montserrat);
+  --gold: #c5a059;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+  overflow-x: hidden;
+  font-family: var(--font-sans), sans-serif;
+}
+
+/* Background Hero Styles */
+.hero-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Triptych Background Layout */
+.triptych-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: -2;
+}
+
+.triptych-pane {
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.triptych-pane:last-child {
+  border-right: none;
+}
+
+.triptych-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: slowZoom 40s infinite alternate;
+}
+
+.hero-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+/* Typography & Layout */
+.names-logo {
+  font-family: var(--font-serif), serif;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 640px) {
+  .names-logo {
+    font-size: 1.25rem;
+  }
+}
+
+.names-title {
+  font-family: var(--font-serif), serif;
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.event-details {
+  font-family: var(--font-serif), serif;
+  font-size: clamp(0.9rem, 2vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  opacity: 0.9;
+}
+
+.glass-card {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Animations */
+@keyframes slowZoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.1);
+  }
+}
+
+@theme {
+  --animate-fade-in: fadeIn 1.5s ease-out forwards;
+  --animate-scale-up: scaleUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  --animate-checkmark: checkmark 0.4s ease-in-out forwards;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleUp {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes checkmark {
+    from {
+      stroke-dashoffset: 100;
+      stroke-dasharray: 100;
+      opacity: 0;
+    }
+
+    to {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 100;
+      opacity: 1;
+    }
+  }
+}
+
+/* Screen Split / Broken Gate Animation */
+.split-gate-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  perspective: 2500px;
+  z-index: 200;
+}
+
+.split-gate-half {
+  flex: 1;
+  height: 100%;
+  position: relative;
+  background: #070b09;
+  /* Deep mystery green */
+  transition: transform 1.8s cubic-bezier(0.7, 0, 0.3, 1);
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+/* Texture and lighting for the walls */
+.split-gate-half::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at center, #1a2f26 0%, transparent 80%),
+    url('https://www.transparenttextures.com/patterns/natural-paper.png');
+  opacity: 0.4;
+}
+
+.split-gate-left {
+  transform-origin: left;
+  border-right: 1px solid rgba(197, 160, 89, 0.1);
+}
+
+.split-gate-right {
+  transform-origin: right;
+  border-left: 1px solid rgba(197, 160, 89, 0.1);
+}
+
+/* Open States */
+.is-splitting .split-gate-left {
+  transform: translateX(-100%) rotateY(-20deg);
+}
+
+.is-splitting .split-gate-right {
+  transform: translateX(100%) rotateY(20deg);
+}
+
+/* The Envelope as a foreground object on the gates */
+.envelope-split-wrapper {
+  position: absolute;
+  top: 50%;
+  width: min(560px, 90vw);
+  /* Full envelope width responsive */
+  height: min(380px, 60vh);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.left-half-envelope {
+  right: 0;
+  width: 50%;
+  /* Half width */
+  overflow: hidden;
+  background: linear-gradient(135deg, #1a2f26 0%, #15251e 100%);
+  position: absolute;
+  height: 100%;
+  border-radius: 4px 0 0 4px;
+}
+
+.right-half-envelope {
+  left: 0;
+  width: 50%;
+  overflow: hidden;
+  background: linear-gradient(-45deg, #1a2f26 0%, #15251e 100%);
+  position: absolute;
+  height: 100%;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Wax Seal Splitting */
+.seal-split-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 250;
+  transition: all 0.5s ease-out;
+}
+
+.is-splitting .seal-split-wrapper {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.5);
+  filter: blur(20px);
+}
+
+.wax-seal-half {
+  width: 64px;
+  height: 128px;
+  background: radial-gradient(circle at center, #d4af37 0%, #c5a059 100%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Shared Texture */
+.gate-texture {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+}
+
+@keyframes pulse-slow {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s infinite ease-in-out;
+}
