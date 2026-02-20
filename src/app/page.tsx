@@ -7,6 +7,7 @@ import DressCode from '@/components/DressCode';
 import LocationSection from '@/components/LocationSection';
 import SuccessModal from '@/components/SuccessModal';
 import LandingGate from '@/components/LandingGate';
+import GratitudeSection from '@/components/GratitudeSection';
 import { GUEST_PHOTOS } from '@/constants/guests';
 
 export default function Home() {
@@ -50,11 +51,11 @@ export default function Home() {
   const currentGuestPhoto = GUEST_PHOTOS[guestName] || null;
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col overflow-x-hidden">
       {/* Section 0: Landing Gate */}
       {!isOpened && <LandingGate onOpen={handleOpen} />}
 
-      <div className={`transition-all duration-1000`}>
+      <div className={`transition-all duration-1000 overflow-x-hidden`}>
         {/* Gratitude Modal */}
         {showGratitude && (
           <SuccessModal
@@ -65,11 +66,11 @@ export default function Home() {
         )}
 
         {/* Section 1: Hero & RSVP */}
-        <section className="h-screen flex flex-col items-center justify-center text-center px-4 relative">
+        <section className="min-h-[100svh] flex flex-col items-center justify-center text-center px-4 relative">
           <div className="animate-fade-in flex flex-col items-center">
             <h1 className="names-title !mb-0 font-bold text-white drop-shadow-2xl">Juan {'&'} Vale</h1>
             <p className="event-details uppercase tracking-[0.3em] font-bold text-white/90 drop-shadow-lg">
-              28 de agosto de 2026 - Medellín, Colombia
+              28 de agosto de 2026 - Subachoque, Colombia
             </p>
             <RSVPSection onValidated={handleValidated} onProceed={handleProceed} />
           </div>
@@ -109,6 +110,8 @@ export default function Home() {
             <div ref={locationRef}>
               <LocationSection />
             </div>
+
+            <GratitudeSection />
 
             {/* Footer Space */}
             <section className="h-[20vh] flex items-center justify-center bg-black">

@@ -9,15 +9,25 @@ interface SuccessModalProps {
 export default function SuccessModal({ name, imageUrl, onClose }: SuccessModalProps) {
     return (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/70 backdrop-blur-[6px] animate-fade-in">
-            <div className="w-full max-w-lg bg-[#f4ece1] border border-[#d3c7b5] p-6 sm:p-12 rounded-[30px] sm:rounded-[40px] text-center space-y-8 sm:space-y-12 shadow-[0_40px_120px_rgba(0,0,0,0.4)] relative overflow-hidden group">
+            <div className="relative w-full max-w-lg bg-[#0d1a15] border border-[#d3c7b5] p-6 sm:p-12 rounded-[30px] sm:rounded-[40px] text-center space-y-8 sm:space-y-12 shadow-[0_40px_120px_rgba(0,0,0,0.4)] overflow-hidden group">
+                {/* Background Image Template */}
+                <div className="absolute inset-0 z-0">
+                    <img
+                        src="/invitacion.jpg"
+                        alt="Fondo de Éxito"
+                        className="w-full h-full object-cover opacity-90"
+                    />
+                    <div className="absolute inset-0 bg-white/40" />
+                </div>
+
                 {/* Kraft/Rustic Paper Texture Overlays */}
-                <div className="absolute inset-0 pointer-events-none opacity-[0.2] mix-blend-multiply bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]" />
+                <div className="absolute inset-0 z-10 pointer-events-none opacity-[0.2] mix-blend-multiply bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]" />
                 <div className="absolute inset-0 pointer-events-none opacity-[0.15] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/pinstriped-suit.png')]" />
 
                 {/* Premium Botanical SVGs (Ramitas/Hojas) */}
                 {/* Top Left Branch */}
-                <div className="absolute -top-8 -left-8 w-24 h-24 sm:w-32 sm:h-32 opacity-20 pointer-events-none rotate-[-15deg]">
-                    <svg viewBox="0 0 100 100" className="w-full h-full text-[#5C7053]" fill="currentColor">
+                <div className="absolute -top-8 -left-8 w-24 h-24 sm:w-32 sm:h-32 opacity-10 pointer-events-none rotate-[-15deg] z-20">
+                    <svg viewBox="0 0 100 100" className="w-full h-full text-black" fill="currentColor">
                         <path d="M10,90 Q30,70 50,80 T90,60 M50,80 L40,60 M50,80 L60,70" stroke="currentColor" fill="none" strokeWidth="2" />
                         <ellipse cx="40" cy="55" rx="8" ry="4" transform="rotate(-30 40 55)" />
                         <ellipse cx="65" cy="65" rx="8" ry="4" transform="rotate(-20 65 65)" />
@@ -82,19 +92,19 @@ export default function SuccessModal({ name, imageUrl, onClose }: SuccessModalPr
                 </div>
 
                 {/* Typography Section */}
-                <div className="space-y-4 sm:space-y-6 animate-fade-in-up relative z-10">
-                    <div className="space-y-1 sm:space-y-2">
-                        <p className="font-montserrat text-[#3d362e] text-xs sm:text-sm md:text-lg font-black uppercase tracking-[0.2em] sm:tracking-[0.3em]">
-                            ¡LOS AMAMOS!:
+                <div className="space-y-4 sm:space-y-6 animate-fade-in-up relative z-30">
+                    <div className="space-y-1 sm:space-y-2 text-black">
+                        <p className="font-montserrat text-xs sm:text-sm md:text-lg font-black uppercase tracking-[0.2em] sm:tracking-[0.3em]">
+                            ¡LOS AMAMOS!
                         </p>
-                        <p className="font-serif italic text-[#5C7053] text-xl sm:text-[22px] md:text-[28px] font-bold tracking-wide leading-tight">
+                        <p className="font-serif italic text-xl sm:text-[22px] md:text-[28px] font-bold tracking-wide leading-tight">
                             {name}
                         </p>
                     </div>
 
-                    <div className="w-12 sm:w-16 h-px bg-[#d3c7b5] mx-auto opacity-60" />
+                    <div className="w-12 sm:w-16 h-px bg-black/10 mx-auto" />
 
-                    <p className="font-serif italic text-[#5c544a] text-sm sm:text-lg md:text-xl font-light leading-relaxed max-w-[95%] sm:max-w-[90%] mx-auto px-2">
+                    <p className="font-serif italic text-black font-medium text-sm sm:text-lg md:text-xl leading-relaxed max-w-[95%] sm:max-w-[90%] mx-auto px-2">
                         &quot;Gracias por decir que sí, nos emociona mucho que sean parte de esto, no sería lo mismo sin ustedes&quot;
                     </p>
                 </div>

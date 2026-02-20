@@ -1,4 +1,4 @@
-import { Playfair_Display, Montserrat } from 'next/font/google';
+import { Playfair_Display, Montserrat, Dancing_Script, Cormorant_Garamond } from 'next/font/google';
 import "./globals.css";
 import type { Metadata } from 'next';
 
@@ -12,6 +12,18 @@ const montserrat = Montserrat({
   subsets: ['latin'],
   variable: '--font-montserrat',
   weight: ['300', '400', '700']
+});
+
+const dancingScript = Dancing_Script({
+  subsets: ['latin'],
+  variable: '--font-dancing',
+  weight: ['400', '700']
+});
+
+const cormorantGaramond = Cormorant_Garamond({
+  subsets: ['latin'],
+  variable: '--font-cormorant',
+  weight: ['300', '400', '600', '700']
 });
 
 const IMAGES = [
@@ -32,7 +44,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth">
-      <body className={`${playfair.variable} ${montserrat.variable} font-montserrat antialiased min-h-screen overflow-x-hidden`}>
+      <body className={`${playfair.variable} ${montserrat.variable} ${dancingScript.variable} ${cormorantGaramond.variable} font-montserrat antialiased min-h-screen overflow-x-hidden`}>
         {/* Shared Triptych Background */}
         <div className="triptych-container">
           {IMAGES.map((src, index) => (

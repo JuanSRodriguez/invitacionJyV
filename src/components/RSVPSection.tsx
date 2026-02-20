@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { GUESTS } from '@/constants/guests';
 
 interface RSVPSectionProps {
     onValidated: (name: string) => void;
@@ -20,26 +21,16 @@ export default function RSVPSection({ onValidated, onProceed }: RSVPSectionProps
         // Intelligent mapping logic
         const input = name.toLowerCase().trim();
 
-        const guests = [
-            { formal: 'Dani y Kric bebé Ethan', husband: 'Dani', husbandKeys: ['dani', 'daniel'], wife: 'Kric', wifeKeys: ['kric', 'kriccia', 'kri'], child: 'Ethan', childKeys: ['ethan'], childPrefix: 'tu hijo' },
-            { formal: 'Cris y Pau bebé Anto', husband: 'Cris', husbandKeys: ['cris', 'cristian'], wife: 'Pau', wifeKeys: ['pau', 'paula'], child: 'Anto', childKeys: ['anto', 'antonia'], childPrefix: 'tu hija' },
-            { formal: 'Dani y Rubby bebé Cami', husband: 'Dani', husbandKeys: ['dani', 'daniel'], wife: 'Rubby', wifeKeys: ['rubby'], child: 'Cami', childKeys: ['cami', 'camila'], childPrefix: 'tu hija' },
-            { formal: 'Sebas y Ale bebé JuanPa', husband: 'Sebas', husbandKeys: ['sebas', 'sebastian'], wife: 'Ale', wifeKeys: ['ale', 'alejandra'], child: 'JuanPa', childKeys: ['juanpa', 'juan'], childPrefix: 'tu hijo' },
-            { formal: 'Pipe y Nata', husband: 'Pipe', husbandKeys: ['pipe', 'felipe'], wife: 'Nata', wifeKeys: ['nata', 'natalia'] },
-            { formal: 'David y Lili hijas Sofi y hermana', husband: 'David', husbandKeys: ['david'], wife: 'Lili', wifeKeys: ['lili', 'liliana'], child: 'Sofi y hermana', childKeys: ['sofi', 'sofia', 'hermana'], childPrefix: 'tus hijas' }
-        ];
-
         // 1. Find potential matches
-        const potentialMatches = guests.filter(g =>
+        const potentialMatches = GUESTS.filter(g =>
             g.husbandKeys.some(k => input.includes(k)) ||
             g.wifeKeys.some(k => input.includes(k))
         );
 
         if (potentialMatches.length === 0) {
-            // Standard fallback
             setTimeout(() => {
-                setStatus('invited');
-                onValidated(name);
+                setStatus('idle');
+                setFeedback('Lo sentimos, no pudimos encontrar tu invitación. Por favor escribe tu nombre completo o contacta a Juan o Vale.');
             }, 1500);
             return;
         }
@@ -54,7 +45,8 @@ export default function RSVPSection({ onValidated, onProceed }: RSVPSectionProps
         setTimeout(() => {
             if (!bestMatch && potentialMatches.length > 1) {
                 setStatus('idle');
-                setFeedback(`Hay dos ${input.charAt(0).toUpperCase() + input.slice(1)} en nuestra lista... ¿Cuál es el nombre de tu pareja?`);
+                const firstName = input.split(' ')[0];
+                setFeedback(`Hay varios invitados con el nombre ${firstName.charAt(0).toUpperCase() + firstName.slice(1)}... ¿Cuál es el nombre de tu pareja?`);
                 return;
             }
 
@@ -101,7 +93,7 @@ export default function RSVPSection({ onValidated, onProceed }: RSVPSectionProps
                     <input
                         type="text"
                         placeholder="Ingresa tu nombre..."
-                        className="w-full bg-transparent border-b border-white/30 py-2 sm:py-3 px-1 text-white placeholder:text-white/30 focus:outline-none focus:border-white transition-colors text-sm sm:text-base"
+                        className="w-full bg-transparent border-b border-white/30 py-2 sm:py-3 px-1 text-white placeholder:text-white/30 focus:outline-none focus:border-white transition-colors text-base"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
@@ -125,22 +117,32 @@ export default function RSVPSection({ onValidated, onProceed }: RSVPSectionProps
             )}
 
             {status === 'invited' && (
-                <div className="relative w-full overflow-hidden bg-[#f4ece1] border border-[#d3c7b5] rounded-2xl p-6 sm:p-8 shadow-[0_30px_80px_rgba(0,0,0,0.3)] animate-scale-up group">
+                <div className="relative w-full overflow-hidden bg-[#0d1a15] border border-[#d3c7b5] rounded-2xl p-6 sm:p-8 shadow-[0_30px_80px_rgba(0,0,0,0.3)] animate-scale-up group">
+                    {/* Background Image Template */}
+                    <div className="absolute inset-0 z-0">
+                        <img
+                            src="/invitacion.jpg"
+                            alt="Fondo de Validación"
+                            className="w-full h-full object-cover opacity-90"
+                        />
+                        <div className="absolute inset-0 bg-white/40" />
+                    </div>
+
                     {/* Rustic Paper Texture Overlay */}
-                    <div className="absolute inset-0 pointer-events-none opacity-[0.2] mix-blend-multiply bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]" />
+                    <div className="absolute inset-0 z-10 pointer-events-none opacity-[0.2] mix-blend-multiply bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]" />
 
                     {/* Multiple Botanical SVGs (Ramitas/Hojas) for a Fuller Look */}
                     {/* Top Left Branch */}
-                    <div className="absolute -top-3 -left-3 w-20 h-20 sm:w-28 sm:h-28 opacity-20 pointer-events-none rotate-[-45deg]">
-                        <svg viewBox="0 0 100 100" className="w-full h-full text-[#5C7053]" fill="currentColor">
+                    <div className="absolute -top-3 -left-3 w-20 h-20 sm:w-28 sm:h-28 opacity-10 pointer-events-none rotate-[-45deg] z-20">
+                        <svg viewBox="0 0 100 100" className="w-full h-full text-black" fill="currentColor">
                             <path d="M10,90 Q30,70 50,80 T90,60 M50,80 L40,60 M50,80 L60,70" stroke="currentColor" fill="none" strokeWidth="2" />
                             <ellipse cx="40" cy="55" rx="8" ry="4" transform="rotate(-30 40 55)" />
                             <ellipse cx="65" cy="65" rx="8" ry="4" transform="rotate(-20 65 65)" />
                         </svg>
                     </div>
 
-                    <div className="relative z-10 flex flex-col items-center gap-3 sm:gap-4 py-2 sm:py-4">
-                        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#5C7053] rounded-full flex items-center justify-center shadow-[0_10px_30px_rgba(92,112,83,0.3)] border-2 border-white/20">
+                    <div className="relative z-30 flex flex-col items-center gap-3 sm:gap-4 py-2 sm:py-4">
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-black/80 rounded-full flex items-center justify-center shadow-lg border-2 border-white/20">
                             <svg
                                 className="w-8 h-8 sm:w-10 sm:h-10 text-white animate-checkmark"
                                 fill="none"
@@ -151,8 +153,8 @@ export default function RSVPSection({ onValidated, onProceed }: RSVPSectionProps
                             </svg>
                         </div>
                         <div className="text-center mb-4 sm:mb-6">
-                            <h3 className="text-lg sm:text-xl font-bold font-serif text-[#3d362e] uppercase italic tracking-wider">¡Invitado VIP Confirmado!</h3>
-                            <p className="text-[10px] sm:text-sm text-[#5C7053] mt-1 uppercase tracking-[0.2em] font-black">Los amamos: {name}</p>
+                            <h3 className="text-lg sm:text-xl font-bold font-serif text-black uppercase italic tracking-wider">¡Invitados VIP!</h3>
+                            <p className="text-[10px] sm:text-sm text-black mt-1 uppercase tracking-[0.1em] font-black leading-relaxed max-w-[250px] mx-auto">Están en nuestra lista de invitados especiales {name}</p>
                         </div>
 
                         <button
