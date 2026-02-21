@@ -13,36 +13,78 @@ export default function RSVPSection({ onValidated, onProceed }: RSVPSectionProps
     const [status, setStatus] = useState<'idle' | 'checking' | 'invited'>('idle');
     const [feedback, setFeedback] = useState<string | null>(null);
 
+    const getLevenshteinDistance = (a: string, b: string): number => {
+        const matrix = Array.from({ length: a.length + 1 }, () =>
+            Array.from({ length: b.length + 1 }, (_, i) => i)
+        );
+        for (let i = 0; i <= a.length; i++) matrix[i][0] = i;
+
+        for (let j = 0; j <= b.length; j++) matrix[0][j] = j;
+
+        for (let i = 1; i <= a.length; i++) {
+            for (let j = 1; j <= b.length; j++) {
+                const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+                matrix[i][j] = Math.min(
+                    matrix[i - 1][j] + 1,
+                    matrix[i][j - 1] + 1,
+                    matrix[i - 1][j - 1] + cost
+                );
+            }
+        }
+        return matrix[a.length][b.length];
+    };
+
     const handleCheck = () => {
         if (!name.trim()) return;
         setFeedback(null);
         setStatus('checking');
 
-        // Intelligent mapping logic
         const input = name.toLowerCase().trim();
 
-        // 1. Find potential matches
+        // 1. Find potential matches (exact or contains)
         const potentialMatches = GUESTS.filter(g =>
-            g.husbandKeys.some(k => input.includes(k)) ||
-            g.wifeKeys.some(k => input.includes(k))
+            g.husbandKeys.some(k => input.includes(k) || k.includes(input)) ||
+            g.wifeKeys.some(k => input.includes(k) || k.includes(input))
         );
 
-        if (potentialMatches.length === 0) {
-            setTimeout(() => {
-                setStatus('idle');
-                setFeedback('Lo sentimos, no pudimos encontrar tu invitación. Por favor escribe tu nombre completo o contacta a Juan o Vale.');
-            }, 1500);
-            return;
-        }
-
-        // 2. Resolve ambiguity (Multiple "Dani")
-        const bestMatch = potentialMatches.find(g => {
-            const hasHusband = g.husbandKeys.some(k => input.includes(k));
-            const hasWife = g.wifeKeys.some(k => input.includes(k));
-            return hasHusband && hasWife;
-        });
-
         setTimeout(() => {
+            if (potentialMatches.length === 0) {
+                // 2. Fuzzy Matching for typos
+                let closestMatch: { key: string, distance: number } | null = null;
+
+                GUESTS.forEach(g => {
+                    const keys = [...g.husbandKeys, ...g.wifeKeys];
+                    if (g.childKeys) keys.push(...g.childKeys);
+
+                    keys.forEach(k => {
+                        const dist = getLevenshteinDistance(input, k);
+                        if (!closestMatch || dist < closestMatch.distance) {
+                            closestMatch = { key: k, distance: dist };
+                        }
+                    });
+                });
+
+                // If close (1-2 chars diff), suggest typo correction
+                if (closestMatch && (closestMatch as any).distance > 0 && (closestMatch as any).distance <= 2) {
+                    setStatus('idle');
+                    const suggestion = (closestMatch as any).key;
+                    setFeedback(`quizas escribiste mal tu nombre? quisiste decir ${suggestion.charAt(0).toUpperCase() + suggestion.slice(1)}? revisalo!.`);
+                    return;
+                }
+
+                // If no close match, show the generic "not found"
+                setStatus('idle');
+                setFeedback('Lo sentimos, no encontramos tu invitación. Escribe tu nombre completo o contacta a Juan o Vale.');
+                return;
+            }
+
+            // 3. Resolve ambiguity (Multiple results)
+            const bestMatch = potentialMatches.find(g => {
+                const hasHusband = g.husbandKeys.some(k => input.includes(k));
+                const hasWife = g.wifeKeys.some(k => input.includes(k));
+                return hasHusband && hasWife;
+            });
+
             if (!bestMatch && potentialMatches.length > 1) {
                 setStatus('idle');
                 const firstName = input.split(' ')[0];
@@ -55,21 +97,21 @@ export default function RSVPSection({ onValidated, onProceed }: RSVPSectionProps
             const inputHasWife = activeMatch.wifeKeys.some(k => input.includes(k));
             const inputHasChild = activeMatch.childKeys ? activeMatch.childKeys.some(k => input.includes(k)) : true;
 
-            if (!inputHasHusband) {
-                setStatus('idle');
-                setFeedback(`¿Y tu esposo ${activeMatch.husband} qué?`);
-                return;
-            }
+            const missing = [];
+            if (!inputHasHusband) missing.push(activeMatch.husband);
+            if (!inputHasWife) missing.push(activeMatch.wife);
+            if (activeMatch.child && !inputHasChild) missing.push(activeMatch.child);
 
-            if (!inputHasWife) {
+            if (missing.length > 0) {
                 setStatus('idle');
-                setFeedback(`¿Y tu esposa ${activeMatch.wife} qué?`);
-                return;
-            }
-
-            if (activeMatch.child && !inputHasChild) {
-                setStatus('idle');
-                setFeedback(`¿Y ${activeMatch.childPrefix} ${activeMatch.child} qué?`);
+                let missingMsg = "";
+                if (missing.length === 1) {
+                    missingMsg = `¿Y ${missing[0]} qué?`;
+                } else {
+                    const last = missing.pop();
+                    missingMsg = `¿Y ${missing.join(', ')} y ${last} qué?`;
+                }
+                setFeedback(missingMsg);
                 return;
             }
 

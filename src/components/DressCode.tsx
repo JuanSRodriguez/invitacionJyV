@@ -106,7 +106,7 @@ export default function DressCode() {
                 >
                     <div
                         onClick={(e) => e.stopPropagation()}
-                        className="relative w-full max-h-[95vh] overflow-y-auto rounded-sm shadow-2xl bg-[#E5E1D3] text-[#2c3e36] max-w-6xl"
+                        className="relative w-full h-fit md:h-auto overflow-y-auto rounded-sm shadow-2xl bg-[#E5E1D3] text-[#2c3e36] max-w-6xl mx-auto"
                     >
                         <button
                             className="absolute top-4 right-4 z-40 text-black/50 hover:text-black bg-white/50 rounded-full p-2 backdrop-blur-md transition-all sm:p-3"
@@ -129,85 +129,84 @@ export default function DressCode() {
 
                             {/* Side: The Information Card */}
                             {selectedImage.includes('mujeres') && !selectedImage.includes('bebe') && !selectedImage.includes('bebesmujeres') ? (
-                                <div className="w-full bg-[#E5E1D3] p-6 sm:p-8 md:p-12 relative flex flex-col items-center justify-center text-[#2F3E30] min-h-[400px]">
+                                <div className="w-full bg-[#E5E1D3] p-4 sm:p-6 md:p-8 relative flex flex-col items-center justify-center text-[#2F3E30] min-h-[300px]">
                                     <div className="absolute inset-0 pointer-events-none opacity-[0.4] mix-blend-multiply bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]" />
 
-                                    <div className="relative z-10 w-full max-w-lg flex flex-col items-center space-y-6 sm:space-y-8">
-                                        <div className="text-center space-y-2">
-                                            <p className="font-sans text-2xl sm:text-3xl md:text-5xl italic tracking-wide">Código de vestimenta</p>
+                                    <div className="relative z-10 w-full max-w-lg flex flex-col items-center space-y-4 sm:space-y-6">
+                                        <div className="text-center space-y-1">
+                                            <p className="font-sans text-2xl sm:text-3xl md:text-4xl italic tracking-wide">Código de vestimenta</p>
                                             <p className="tracking-[0.2em] text-[8px] sm:text-[10px] font-bold opacity-80">Para ellas</p>
                                         </div>
 
-                                        <div className="flex justify-center gap-3 sm:gap-6 py-2 sm:py-4">
-                                            <div className="w-8 h-8 sm:w-14 sm:h-14 rounded-full bg-[#A8B5A0] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
-                                            <div className="w-8 h-8 sm:w-14 sm:h-14 rounded-full bg-[#839678] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
-                                            <div className="w-8 h-8 sm:w-14 sm:h-14 rounded-full bg-[#5C7053] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
-                                            <div className="w-8 h-8 sm:w-14 sm:h-14 rounded-full bg-[#3D4C38] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
+                                        <div className="flex justify-center gap-2 sm:gap-4 py-1 sm:py-2">
+                                            <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-[#A8B5A0] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
+                                            <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-[#839678] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
+                                            <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-[#5C7053] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
+                                            <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-[#3D4C38] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
                                         </div>
 
-                                        <div className="w-full grid grid-cols-2 gap-4 sm:gap-8 items-start mt-2 sm:mt-4">
-                                            <div className="space-y-4 sm:space-y-6 text-right font-sans">
-                                                <h4 className="font-bold text-[8px] sm:text-[10px] tracking-widest border-b border-[#2F3E30]/20 pb-1 sm:pb-2 mb-2 sm:mb-4">Tonalidades</h4>
-                                                <div className="flex flex-col items-end gap-2 sm:gap-3 text-xs italic">
-                                                    <div className="flex items-center gap-2 text-[10px] sm:text-xs"><span>Verde oliva</span><div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#5C7053]"></div></div>
-                                                    <div className="flex items-center gap-2 text-[10px] sm:text-xs"><span>Salvia</span><div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#839678]"></div></div>
-                                                    <div className="flex items-center gap-2 text-[10px] sm:text-xs"><span>Eucalipto</span><div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#75866C]"></div></div>
-                                                    <div className="flex items-center gap-2 text-[10px] sm:text-xs"><span>Musgo</span><div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#4A5D45]"></div></div>
-                                                    <div className="flex items-center gap-2 text-[10px] sm:text-xs"><span>Bosque profundo</span><div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#3D4C38]"></div></div>
+                                        <div className="w-full grid grid-cols-2 gap-3 sm:gap-6 items-start mt-1 sm:mt-2">
+                                            <div className="space-y-2 sm:space-y-4 text-right font-sans">
+                                                <h4 className="font-bold text-[8px] sm:text-[10px] tracking-widest border-b border-[#2F3E30]/20 pb-1 mb-1">Tonalidades</h4>
+                                                <div className="flex flex-col items-end gap-1 sm:gap-2 text-[10px] italic">
+                                                    <div className="flex items-center gap-1.5"><span>Verde oliva</span><div className="w-2.5 h-2.5 rounded-full bg-[#5C7053]"></div></div>
+                                                    <div className="flex items-center gap-1.5"><span>Salvia</span><div className="w-2.5 h-2.5 rounded-full bg-[#839678]"></div></div>
+                                                    <div className="flex items-center gap-1.5"><span>Eucalipto</span><div className="w-2.5 h-2.5 rounded-full bg-[#75866C]"></div></div>
+                                                    <div className="flex items-center gap-1.5"><span>Bosque</span><div className="w-2.5 h-2.5 rounded-full bg-[#3D4C38]"></div></div>
                                                 </div>
                                             </div>
 
-                                            <div className="space-y-6 sm:space-y-8 text-left font-sans">
+                                            <div className="space-y-4 sm:space-y-6 text-left font-sans">
                                                 <div>
-                                                    <h4 className="font-bold text-[8px] sm:text-[10px] tracking-widest border-b border-[#2F3E30]/20 pb-1 sm:pb-2 mb-2 sm:mb-4">Las reglas</h4>
-                                                    <p className="text-[10px] sm:text-xs leading-relaxed italic opacity-80 font-medium">Vestido largo fluido.<br />Zapatos cómodos.</p>
+                                                    <h4 className="font-bold text-[8px] sm:text-[10px] tracking-widest border-b border-[#2F3E30]/20 pb-1 mb-1">Las reglas</h4>
+                                                    <p className="text-[10px] sm:text-xs leading-relaxed italic opacity-80 font-medium whitespace-nowrap">Vestido largo fluido.<br />Zapatos cómodos.</p>
                                                 </div>
                                                 <div>
-                                                    <h4 className="font-bold text-[8px] sm:text-[10px] tracking-widest border-b border-[#2F3E30]/20 pb-1 sm:pb-2 mb-2 sm:mb-4">El deber</h4>
-                                                    <p className="text-[10px] sm:text-xs leading-relaxed italic opacity-80 font-medium">Llegar puntual.<br />Sonreír siempre.<br />¡Disfrutar!</p>
+                                                    <h4 className="font-bold text-[8px] sm:text-[10px] tracking-widest border-b border-[#2F3E30]/20 pb-1 mb-1">El deber</h4>
+                                                    <p className="text-[10px] sm:text-xs leading-relaxed italic opacity-80 font-medium whitespace-nowrap">Llegar puntual.<br />¡Disfrutar!</p>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div className="pt-4 sm:pt-6 md:pt-12 text-center max-w-xs mx-auto border-t border-[#2F3E30]/10 w-full mb-4 sm:mb-0">
+                                        <div className="pt-2 sm:pt-4 md:pt-6 text-center max-w-xs mx-auto border-t border-[#2F3E30]/10 w-full mb-2 sm:mb-0">
                                             <p className="font-sans italic text-xs sm:text-sm text-[#2F3E30]/70 leading-relaxed px-4">
                                                 &quot;No puedo decir &apos;Sí, acepto&apos; sin ti.&quot;
                                             </p>
-                                            <p className="text-[9px] sm:text-[10px] font-bold mt-2 tracking-widest opacity-50">- Vale</p>
+                                            <p className="text-[9px] sm:text-[10px] font-bold mt-1 tracking-widest opacity-50">- Vale</p>
                                         </div>
                                     </div>
                                 </div>
                             ) : (selectedImage.includes('bebe') || selectedImage.includes('bebesmujeres')) ? (
-                                <div className="w-full bg-[#E5E1D3] p-6 sm:p-8 md:p-12 relative flex flex-col items-center justify-center text-[#4A3F35] min-h-[400px]">
+                                <div className="w-full bg-[#E5E1D3] p-4 sm:p-6 md:p-8 relative flex flex-col items-center justify-center text-[#4A3F35] min-h-[300px]">
                                     <div className="absolute inset-0 pointer-events-none opacity-[0.4] mix-blend-multiply bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]" />
 
-                                    <div className="relative z-10 w-full max-w-lg flex flex-col items-center space-y-6 sm:space-y-8">
-                                        <div className="text-center space-y-2">
-                                            <p className="font-sans text-2xl sm:text-3xl md:text-5xl italic tracking-wide">Código de vestimenta</p>
+                                    <div className="relative z-10 w-full max-w-lg flex flex-col items-center space-y-4 sm:space-y-6">
+                                        <div className="text-center space-y-1">
+                                            <p className="font-sans text-2xl sm:text-3xl md:text-4xl italic tracking-wide">Código de vestimenta</p>
                                             <p className="tracking-[0.2em] text-[8px] sm:text-[10px] font-bold opacity-80">
                                                 {selectedImage.includes('mujeres') ? 'Para las niñas' : 'Para los niños'}
                                             </p>
                                         </div>
 
-                                        <div className="flex justify-center gap-3 sm:gap-6 py-2 sm:py-4">
+                                        <div className="flex justify-center gap-2 sm:gap-4 py-1 sm:py-2">
                                             {selectedImage.includes('mujeres') ? (
                                                 <>
-                                                    <div className="w-8 h-8 sm:w-14 sm:h-14 rounded-full bg-[#A8B5A0] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
-                                                    <div className="w-8 h-8 sm:w-14 sm:h-14 rounded-full bg-[#839678] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
-                                                    <div className="w-8 h-8 sm:w-14 sm:h-14 rounded-full bg-[#5C7053] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
+                                                    <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-[#A8B5A0] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
+                                                    <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-[#839678] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
+                                                    <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-[#5C7053] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
                                                 </>
                                             ) : (
                                                 <>
-                                                    <div className="w-8 h-8 sm:w-14 sm:h-14 rounded-full bg-[#AE8964] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
-                                                    <div className="w-8 h-8 sm:w-14 sm:h-14 rounded-full bg-[#D2C9B1] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
+                                                    <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-[#AE8964] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
+                                                    <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-[#D2C9B1] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
                                                 </>
                                             )}
                                         </div>
 
-                                        <div className="w-full grid grid-cols-2 gap-4 sm:gap-8 items-start mt-2 sm:mt-4">
-                                            <div className="space-y-4 sm:space-y-6 text-right font-sans">
-                                                <h4 className="font-bold text-[8px] sm:text-[10px] tracking-widest border-b border-[#4A3F35]/20 pb-1 sm:pb-2 mb-2 sm:mb-4">Tonalidades</h4>
-                                                <div className="flex flex-col items-end gap-2 sm:gap-3 text-xs italic">
+                                        <div className="w-full grid grid-cols-2 gap-3 sm:gap-6 items-start mt-1 sm:mt-2">
+                                            <div className="space-y-3 sm:space-y-4 text-right font-sans">
+                                                <h4 className="font-bold text-[8px] sm:text-[10px] tracking-widest border-b border-[#4A3F35]/20 pb-1 mb-2">Tonalidades</h4>
+                                                <div className="flex flex-col items-end gap-1.5 sm:gap-2 text-xs italic">
                                                     {selectedImage.includes('mujeres') ? (
                                                         <>
                                                             <div className="flex items-center gap-2 text-[10px] sm:text-xs"><span>Verde oliva</span><div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#5C7053]"></div></div>
@@ -223,70 +222,70 @@ export default function DressCode() {
                                                 </div>
                                             </div>
 
-                                            <div className="space-y-6 sm:space-y-8 text-left font-sans">
+                                            <div className="space-y-4 sm:space-y-6 text-left font-sans">
                                                 <div>
-                                                    <h4 className="font-bold text-[8px] sm:text-[10px] tracking-widest border-b border-[#4A3F35]/20 pb-1 sm:pb-2 mb-2 sm:mb-4">Su estilo</h4>
+                                                    <h4 className="font-bold text-[8px] sm:text-[10px] tracking-widest border-b border-[#4A3F35]/20 pb-1 mb-2">Su estilo</h4>
                                                     <p className="text-[10px] sm:text-xs leading-relaxed italic opacity-80 font-medium">
                                                         {selectedImage.includes('mujeres') ? 'Vestido Mini Gala.' : 'Traje Mini Formal.'}<br />
                                                         {selectedImage.includes('mujeres') ? 'Acorde al protocolo.' : 'Preferiblemente colores claros.'}
                                                     </p>
                                                 </div>
                                                 <div>
-                                                    <h4 className="font-bold text-[8px] sm:text-[10px] tracking-widest border-b border-[#4A3F35]/20 pb-1 sm:pb-2 mb-2 sm:mb-4">El objetivo</h4>
+                                                    <h4 className="font-bold text-[8px] sm:text-[10px] tracking-widest border-b border-[#4A3F35]/20 pb-1 mb-2">El objetivo</h4>
                                                     <p className="text-[10px] sm:text-xs leading-relaxed italic opacity-80 font-medium">Jugar y divertirse.<br />Estar cómodos.</p>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div className="pt-4 sm:pt-6 md:pt-12 text-center max-w-xs mx-auto border-t border-[#4A3F35]/10 w-full mb-4 sm:mb-0">
+                                        <div className="pt-2 sm:pt-4 md:pt-6 text-center max-w-xs mx-auto border-t border-[#4A3F35]/10 w-full mb-2 sm:mb-0">
                                             <p className="font-sans italic text-xs sm:text-sm text-[#4A3F35]/70 leading-relaxed px-4">
                                                 {selectedImage.includes('mujeres') ? '“¡No podemos esperar a vernos tan guapas juntas!”' : '“¡No podemos esperar a vernos tan guapos juntos!”'}
                                             </p>
-                                            <p className="text-[9px] sm:text-[10px] font-bold mt-2 tracking-widest opacity-50">- Juan y Vale</p>
+                                            <p className="text-[9px] sm:text-[10px] font-bold mt-1 tracking-widest opacity-50">- Juan y Vale</p>
                                         </div>
                                     </div>
                                 </div>
                             ) : (
-                                <div className="w-full bg-[#E5E1D3] p-6 sm:p-8 md:p-12 relative flex flex-col items-center justify-center text-[#4A3F35] min-h-[400px]">
+                                <div className="w-full bg-[#E5E1D3] p-4 sm:p-6 md:p-8 relative flex flex-col items-center justify-center text-[#4A3F35] min-h-[300px]">
                                     <div className="absolute inset-0 pointer-events-none opacity-[0.4] mix-blend-multiply bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]" />
 
-                                    <div className="relative z-10 w-full max-w-lg flex flex-col items-center space-y-6 sm:space-y-8">
-                                        <div className="text-center space-y-2">
-                                            <p className="font-sans text-2xl sm:text-3xl md:text-5xl italic tracking-wide">Código de vestimenta</p>
+                                    <div className="relative z-10 w-full max-w-lg flex flex-col items-center space-y-4 sm:space-y-6">
+                                        <div className="text-center space-y-1">
+                                            <p className="font-sans text-2xl sm:text-3xl md:text-4xl italic tracking-wide">Código de vestimenta</p>
                                             <p className="tracking-[0.2em] text-[8px] sm:text-[10px] font-bold opacity-80">Para ellos</p>
                                         </div>
 
-                                        <div className="flex justify-center gap-3 sm:gap-6 py-2 sm:py-4">
-                                            <div className="w-8 h-8 sm:w-14 sm:h-14 rounded-full bg-[#AE8964] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
-                                            <div className="w-8 h-8 sm:w-14 sm:h-14 rounded-full bg-white shadow-md border border-[#4A3F35]/20 hover:scale-110 transition-transform"></div>
-                                            <div className="w-8 h-8 sm:w-14 sm:h-14 rounded-full bg-[#5C7053] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
+                                        <div className="flex justify-center gap-2 sm:gap-4 py-1 sm:py-2">
+                                            <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-[#AE8964] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
+                                            <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-white shadow-md border border-[#4A3F35]/20 hover:scale-110 transition-transform"></div>
+                                            <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-[#5C7053] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
                                         </div>
 
-                                        <div className="w-full grid grid-cols-2 gap-4 sm:gap-8 items-start mt-2 sm:mt-4">
-                                            <div className="space-y-4 sm:space-y-6 text-right font-sans">
-                                                <h4 className="font-bold text-[8px] sm:text-[10px] tracking-widest border-b border-[#4A3F35]/20 pb-1 sm:pb-2 mb-2 sm:mb-4">Tonalidades</h4>
-                                                <div className="flex flex-col items-end gap-2 sm:gap-3 text-xs italic">
+                                        <div className="w-full grid grid-cols-2 gap-3 sm:gap-6 items-start mt-1 sm:mt-2">
+                                            <div className="space-y-3 sm:space-y-4 text-right font-sans">
+                                                <h4 className="font-bold text-[8px] sm:text-[10px] tracking-widest border-b border-[#4A3F35]/20 pb-1 mb-2">Tonalidades</h4>
+                                                <div className="flex flex-col items-end gap-1.5 sm:gap-2 text-xs italic">
                                                     <div className="flex items-center gap-2 text-[10px] sm:text-xs"><span>Tan</span><div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#AE8964]"></div></div>
                                                     <div className="flex items-center gap-2 text-[10px] sm:text-xs"><span>Blanco</span><div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-white border border-[#4A3F35]/10"></div></div>
                                                     <div className="flex items-center gap-2 text-[10px] sm:text-xs"><span>Verde</span><div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#5C7053]"></div></div>
                                                 </div>
                                             </div>
 
-                                            <div className="space-y-6 sm:space-y-8 text-left font-sans">
+                                            <div className="space-y-4 sm:space-y-6 text-left font-sans">
                                                 <div>
-                                                    <h4 className="font-bold text-[8px] sm:text-[10px] tracking-widest border-b border-[#4A3F35]/20 pb-1 sm:pb-2 mb-2 sm:mb-4">Reglamento</h4>
+                                                    <h4 className="font-bold text-[8px] sm:text-[10px] tracking-widest border-b border-[#4A3F35]/20 pb-1 mb-2">Reglamento</h4>
                                                     <p className="text-[10px] sm:text-xs leading-relaxed italic opacity-80 font-medium">Traje Tan.<br />Camisa blanca.<br />Corbata verde.<br />Zapatos de vestir.</p>
                                                 </div>
                                                 <div>
-                                                    <h4 className="font-bold text-[8px] sm:text-[10px] tracking-widest border-b border-[#4A3F35]/20 pb-1 sm:pb-2 mb-2 sm:mb-4">Misión</h4>
+                                                    <h4 className="font-bold text-[8px] sm:text-[10px] tracking-widest border-b border-[#4A3F35]/20 pb-1 mb-2">Misión</h4>
                                                     <p className="text-[10px] sm:text-xs leading-relaxed italic opacity-80 font-medium">Brindar con nosotros.<br />Lucir impecable.<br />¡Disfrutar!</p>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div className="pt-4 sm:pt-6 md:pt-12 text-center max-w-xs mx-auto border-t border-[#4A3F35]/10 w-full mb-4 sm:mb-0">
+                                        <div className="pt-2 sm:pt-4 md:pt-6 text-center max-w-xs mx-auto border-t border-[#4A3F35]/10 w-full mb-2 sm:mb-0">
                                             <p className="font-sans italic text-xs sm:text-sm text-[#4A3F35]/70 leading-relaxed px-4">&quot;Gracias por acompañarme en este día tan importante.&quot;</p>
-                                            <p className="text-[9px] sm:text-[10px] font-bold mt-2 tracking-widest opacity-50">- Sebitas</p>
+                                            <p className="text-[9px] sm:text-[10px] font-bold mt-1 tracking-widest opacity-50">- Juan</p>
                                         </div>
                                     </div>
                                 </div>

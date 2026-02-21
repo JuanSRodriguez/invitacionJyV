@@ -56,6 +56,12 @@ body {
   animation: slowZoom 40s infinite alternate;
 }
 
+@media (max-width: 640px) {
+  .triptych-pane:not(:nth-child(3)) {
+    display: none;
+  }
+}
+
 .hero-overlay {
   position: fixed;
   top: 0;
@@ -281,6 +287,41 @@ body {
   position: absolute;
   height: 100%;
   border-radius: 0 4px 4px 0;
+}
+
+@media (max-width: 640px) {
+  .envelope-split-wrapper {
+    display: none;
+  }
+
+  .split-gate-half {
+    background-image: url('/juanyvala2.jpg');
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+  }
+
+  .split-gate-left {
+    background-position: left center;
+  }
+
+  .split-gate-right {
+    background-position: right center;
+  }
+
+  .split-gate-half::before {
+    display: none;
+    /* Remove dark mask to keep invitation bright */
+  }
+
+  /* Force "Ábreme" text and arrow to black on mobile for legibility */
+  .seal-split-wrapper p {
+    color: #1a1a1a !important;
+    text-shadow: none !important;
+  }
+
+  .seal-split-wrapper .animate-bounce {
+    border-color: #1a1a1a !important;
+  }
 }
 
 /* Wax Seal Splitting */
