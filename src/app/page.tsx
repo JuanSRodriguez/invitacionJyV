@@ -23,25 +23,46 @@ export default function Home() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    // Preload audio
-    audioRef.current = new Audio('/Sé Parte de Nuestro Cuento.mp3');
-    audioRef.current.loop = true;
-    audioRef.current.volume = 0;
+    // Initialize audio instance only once
+    if (!audioRef.current) {
+      audioRef.current = new Audio('/Sé Parte de Nuestro Cuento.mp3');
+      audioRef.current.loop = true;
+      audioRef.current.volume = 0;
+    }
+
+    const audio = audioRef.current;
+
+    const handlePause = () => {
+      if (audio) audio.pause();
+    };
+
+    const handleResume = () => {
+      if (audio && isOpened) {
+        audio.play().catch(err => console.log("Audio resume blocked:", err));
+      }
+    };
 
     const handleVisibilityChange = () => {
-      if (typeof document !== 'undefined' && audioRef.current) {
+      if (typeof document !== 'undefined') {
         if (document.visibilityState === 'hidden') {
-          audioRef.current.pause();
-        } else if (document.visibilityState === 'visible' && isOpened) {
-          // Only resume if the invitation has been opened
-          audioRef.current.play().catch(err => console.log("Audio resume blocked:", err));
+          handlePause();
+        } else if (document.visibilityState === 'visible') {
+          handleResume();
         }
       }
     };
 
+    // Robust listeners for all mobile and desktop scenarios
     document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('blur', handlePause);
+    window.addEventListener('focus', handleResume);
+    window.addEventListener('pagehide', handlePause);
+
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('blur', handlePause);
+      window.removeEventListener('focus', handleResume);
+      window.removeEventListener('pagehide', handlePause);
     };
   }, [isOpened]);
 
