@@ -84,7 +84,9 @@ export default function RSVPSection({ onValidated, onProceed }: RSVPSectionProps
         <div className="w-full max-w-md mt-8 sm:mt-12 p-6 sm:p-8 glass-card rounded-2xl animate-fade-in mx-auto">
             {status === 'idle' && (
                 <div className="flex flex-col gap-4 sm:gap-6">
-                    <p className="text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-widest opacity-70 text-white">Tenemos una misión para ti</p>
+                    <h2 className="font-serif text-[10px] sm:text-xs tracking-[0.4em] mb-4 font-bold text-white/90">
+                        Tenemos una misión para ti
+                    </h2>
                     {feedback && (
                         <p className="text-gold text-[10px] sm:text-xs italic animate-bounce-subtle bg-gold/10 p-2 sm:p-3 rounded-lg border border-gold/20">
                             {feedback}
@@ -93,13 +95,13 @@ export default function RSVPSection({ onValidated, onProceed }: RSVPSectionProps
                     <input
                         type="text"
                         placeholder="Ingresa tu nombre..."
-                        className="w-full bg-transparent border-b border-white/30 py-2 sm:py-3 px-1 text-white placeholder:text-white/30 focus:outline-none focus:border-white transition-colors text-base"
+                        className="w-full bg-transparent border-b border-white/20 py-3 sm:py-4 px-2 text-white focus:outline-none focus:border-white transition-colors text-center text-sm sm:text-base font-serif"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
                     <button
                         onClick={handleCheck}
-                        className="confirm-btn-hero !mt-4 !py-3 sm:!py-4 w-full text-xs sm:text-sm"
+                        className="confirm-btn-hero mt-4 mx-auto"
                     >
                         Continuar
                     </button>
@@ -112,7 +114,7 @@ export default function RSVPSection({ onValidated, onProceed }: RSVPSectionProps
                         <div className="absolute inset-0 border-4 border-gold/20 rounded-full" />
                         <div className="absolute inset-0 border-4 border-t-gold rounded-full animate-spin" />
                     </div>
-                    <p className="text-[10px] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.4em] text-white animate-pulse">Buscando tu invitación...</p>
+                    <p className="text-[10px] sm:text-xs tracking-[0.3em] sm:tracking-[0.4em] text-white animate-pulse">Buscando tu invitación...</p>
                 </div>
             )}
 
@@ -131,15 +133,6 @@ export default function RSVPSection({ onValidated, onProceed }: RSVPSectionProps
                     {/* Rustic Paper Texture Overlay */}
                     <div className="absolute inset-0 z-10 pointer-events-none opacity-[0.2] mix-blend-multiply bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]" />
 
-                    {/* Multiple Botanical SVGs (Ramitas/Hojas) for a Fuller Look */}
-                    {/* Top Left Branch */}
-                    <div className="absolute -top-3 -left-3 w-20 h-20 sm:w-28 sm:h-28 opacity-10 pointer-events-none rotate-[-45deg] z-20">
-                        <svg viewBox="0 0 100 100" className="w-full h-full text-black" fill="currentColor">
-                            <path d="M10,90 Q30,70 50,80 T90,60 M50,80 L40,60 M50,80 L60,70" stroke="currentColor" fill="none" strokeWidth="2" />
-                            <ellipse cx="40" cy="55" rx="8" ry="4" transform="rotate(-30 40 55)" />
-                            <ellipse cx="65" cy="65" rx="8" ry="4" transform="rotate(-20 65 65)" />
-                        </svg>
-                    </div>
 
                     <div className="relative z-30 flex flex-col items-center gap-3 sm:gap-4 py-2 sm:py-4">
                         <div className="w-12 h-12 sm:w-16 sm:h-16 bg-black/80 rounded-full flex items-center justify-center shadow-lg border-2 border-white/20">
@@ -153,15 +146,15 @@ export default function RSVPSection({ onValidated, onProceed }: RSVPSectionProps
                             </svg>
                         </div>
                         <div className="text-center mb-4 sm:mb-6">
-                            <h3 className="text-lg sm:text-xl font-bold font-serif text-black uppercase italic tracking-wider">¡Invitados VIP!</h3>
-                            <p className="text-[10px] sm:text-sm text-black mt-1 uppercase tracking-[0.1em] font-black leading-relaxed max-w-[250px] mx-auto">Están en nuestra lista de invitados especiales {name}</p>
+                            <h3 className="text-lg sm:text-xl font-bold font-serif text-black italic tracking-wider">¡Invitados VIP!</h3>
+                            <p className="text-[10px] sm:text-sm text-black mt-4 sm:mt-6 tracking-[0.1em] font-black leading-relaxed max-w-[250px] mx-auto">Están en nuestra lista de invitados especiales {name}</p>
                         </div>
 
                         <button
                             onClick={onProceed}
                             className="group flex flex-col items-center gap-1 sm:gap-2 transition-all hover:scale-105"
                         >
-                            <span className="text-[#5C7053] border-b-2 border-[#5C7053]/20 pb-1 text-[9px] sm:text-[10px] uppercase tracking-[0.3em] font-black group-hover:border-[#5C7053] group-hover:tracking-[0.4em] transition-all duration-500">
+                            <span className="text-[#5C7053] border-b-2 border-[#5C7053]/20 pb-1 text-[9px] sm:text-[10px] tracking-[0.3em] font-black group-hover:border-[#5C7053] group-hover:tracking-[0.4em] transition-all duration-500">
                                 Ver mensaje especial
                             </span>
                             <svg

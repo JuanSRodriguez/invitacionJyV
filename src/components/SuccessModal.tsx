@@ -24,45 +24,6 @@ export default function SuccessModal({ name, imageUrl, onClose }: SuccessModalPr
                 <div className="absolute inset-0 z-10 pointer-events-none opacity-[0.2] mix-blend-multiply bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]" />
                 <div className="absolute inset-0 pointer-events-none opacity-[0.15] mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/pinstriped-suit.png')]" />
 
-                {/* Premium Botanical SVGs (Ramitas/Hojas) */}
-                {/* Top Left Branch */}
-                <div className="absolute -top-8 -left-8 w-24 h-24 sm:w-32 sm:h-32 opacity-10 pointer-events-none rotate-[-15deg] z-20">
-                    <svg viewBox="0 0 100 100" className="w-full h-full text-black" fill="currentColor">
-                        <path d="M10,90 Q30,70 50,80 T90,60 M50,80 L40,60 M50,80 L60,70" stroke="currentColor" fill="none" strokeWidth="2" />
-                        <ellipse cx="40" cy="55" rx="8" ry="4" transform="rotate(-30 40 55)" />
-                        <ellipse cx="65" cy="65" rx="8" ry="4" transform="rotate(-20 65 65)" />
-                        <ellipse cx="85" cy="55" rx="7" ry="3.5" transform="rotate(-10 85 55)" />
-                    </svg>
-                </div>
-
-                {/* Bottom Right Branch */}
-                <div className="absolute -bottom-8 -right-8 w-40 h-40 opacity-20 pointer-events-none rotate-[165deg]">
-                    <svg viewBox="0 0 100 100" className="w-full h-full text-[#5C7053]" fill="currentColor">
-                        <path d="M10,90 Q30,70 50,80 T90,60 M50,80 L40,60 M50,80 L60,70" stroke="currentColor" fill="none" strokeWidth="2" />
-                        <ellipse cx="40" cy="55" rx="9" ry="4.5" transform="rotate(-30 40 55)" />
-                        <ellipse cx="67" cy="67" rx="9" ry="4.5" transform="rotate(-20 67 67)" />
-                        <ellipse cx="88" cy="58" rx="8" ry="4" transform="rotate(-15 88 58)" />
-                        <ellipse cx="32" cy="78" rx="7" ry="3.5" transform="rotate(-45 32 78)" />
-                    </svg>
-                </div>
-
-                {/* Additional Decorative Branches for "Fullness" */}
-                {/* Bottom Left Branch */}
-                <div className="absolute -bottom-10 -left-6 w-32 h-32 opacity-[0.15] pointer-events-none rotate-[45deg]">
-                    <svg viewBox="0 0 100 100" className="w-full h-full text-[#5C7053]" fill="currentColor">
-                        <path d="M10,90 Q30,70 50,80 T90,60" stroke="currentColor" fill="none" strokeWidth="2" />
-                        <ellipse cx="40" cy="55" rx="7" ry="3.5" transform="rotate(-30 40 55)" />
-                        <ellipse cx="65" cy="65" rx="7" ry="3.5" transform="rotate(-20 65 65)" />
-                    </svg>
-                </div>
-
-                {/* Top Right Subtle Branch */}
-                <div className="absolute -top-4 right-12 w-24 h-24 opacity-[0.1] pointer-events-none rotate-[120deg]">
-                    <svg viewBox="0 0 100 100" className="w-full h-full text-[#5C7053]" fill="currentColor">
-                        <path d="M10,90 Q30,70 50,80 T90,60" stroke="currentColor" fill="none" strokeWidth="2" />
-                        <ellipse cx="45" cy="55" rx="6" ry="3" transform="rotate(-30 45 55)" />
-                    </svg>
-                </div>
 
                 {/* Subtle Glow Effect (Warmer) */}
                 <div className="absolute -top-20 -left-20 w-40 h-40 bg-[#5C7053]/5 rounded-full blur-[80px]" />
@@ -97,14 +58,14 @@ export default function SuccessModal({ name, imageUrl, onClose }: SuccessModalPr
                         <p className="font-montserrat text-xs sm:text-sm md:text-lg font-black uppercase tracking-[0.2em] sm:tracking-[0.3em]">
                             ¡LOS AMAMOS!
                         </p>
-                        <p className="font-serif italic text-xl sm:text-[22px] md:text-[28px] font-bold tracking-wide leading-tight">
+                        <p className="font-sans italic text-xl sm:text-[22px] md:text-[28px] font-bold tracking-wide leading-tight">
                             {name}
                         </p>
                     </div>
 
                     <div className="w-12 sm:w-16 h-px bg-black/10 mx-auto" />
 
-                    <p className="font-serif italic text-black font-medium text-sm sm:text-lg md:text-xl leading-relaxed max-w-[95%] sm:max-w-[90%] mx-auto px-2">
+                    <p className="font-sans italic text-black font-medium text-sm sm:text-lg md:text-xl leading-relaxed max-w-[95%] sm:max-w-[90%] mx-auto px-2">
                         &quot;Gracias por decir que sí, nos emociona mucho que sean parte de esto, no sería lo mismo sin ustedes&quot;
                     </p>
                 </div>

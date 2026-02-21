@@ -4,34 +4,19 @@ import { useState, useRef, useEffect } from 'react';
 
 interface LandingGateProps {
     onOpen: () => void;
+    onMusicStart?: () => void;
 }
 
-export default function LandingGate({ onOpen }: LandingGateProps) {
+export default function LandingGate({ onOpen, onMusicStart }: LandingGateProps) {
     const [isOpening, setIsOpening] = useState(false);
-    const audioRef = useRef<HTMLAudioElement | null>(null);
-
-    useEffect(() => {
-        // Preload audio
-        audioRef.current = new Audio('/Sé Parte de Nuestro Cuento.mp3');
-        audioRef.current.loop = true;
-        audioRef.current.volume = 0;
-    }, []);
 
     const handleOpenClick = () => {
         if (isOpening) return;
         setIsOpening(true);
 
-        if (audioRef.current) {
-            audioRef.current.play().catch(err => console.log("Audio playback blocked:", err));
-            let vol = 0;
-            const interval = setInterval(() => {
-                if (vol < 0.7) {
-                    vol += 0.05;
-                    if (audioRef.current) audioRef.current.volume = Math.min(vol, 0.7);
-                } else {
-                    clearInterval(interval);
-                }
-            }, 100);
+        // Start music using callback
+        if (onMusicStart) {
+            onMusicStart();
         }
 
         // Duration of the split animation
@@ -54,7 +39,7 @@ export default function LandingGate({ onOpen }: LandingGateProps) {
                             <div className="gate-texture" />
                             <div className="relative z-10 text-right pr-4 sm:pr-6 translate-x-[50%] flex flex-col items-end gap-3">
                                 <div className="text-right">
-                                    <div className="font-serif text-xl sm:text-2xl md:text-3xl text-gold/80 italic font-bold">Juan</div>
+                                    {/* Name removed as per user request */}
                                     <div className="w-4 sm:w-6 h-px bg-gold/20 mr-0 ml-auto mt-1" />
                                 </div>
                             </div>
@@ -69,7 +54,7 @@ export default function LandingGate({ onOpen }: LandingGateProps) {
                             <div className="gate-texture" />
                             <div className="relative z-10 text-left pl-4 sm:pl-6 translate-x-[-50%] flex flex-col items-start gap-3">
                                 <div className="text-left">
-                                    <div className="font-serif text-xl sm:text-2xl md:text-3xl text-gold/80 italic font-bold">Vale</div>
+                                    {/* Name removed as per user request */}
                                     <div className="w-4 sm:w-6 h-px bg-gold/20 mt-1" />
                                 </div>
                             </div>
@@ -82,7 +67,7 @@ export default function LandingGate({ onOpen }: LandingGateProps) {
                     <div className="seal-split-wrapper">
                         <div className="relative group">
                             {/* Pulsing Hint Text - MOVED TO TOP EDGE OF ENVELOPE */}
-                            <div className="absolute top-[-100px] sm:top-[-130px] md:top-[-200px] left-[50%] translate-x-[-50%] w-[250px] sm:w-[350px] text-center opacity-90 group-hover:opacity-100 transition-opacity">
+                            <div className="absolute top-[-150px] sm:top-[-180px] md:top-[-200px] left-[50%] translate-x-[-50%] w-[250px] sm:w-[350px] text-center opacity-90 group-hover:opacity-100 transition-opacity">
                                 <p className="font-montserrat text-[10px] sm:text-[12px] text-gold tracking-[0.8em] sm:tracking-[1.2em] uppercase drop-shadow-xl font-bold">Ábreme</p>
                                 <div className="w-4 h-4 sm:w-5 sm:h-5 mx-auto border-b-2 border-r-2 border-gold/40 rotate-45 animate-bounce mt-4" />
                             </div>

@@ -1,29 +1,18 @@
-import { Playfair_Display, Montserrat, Dancing_Script, Cormorant_Garamond } from 'next/font/google';
+import { Cormorant_Garamond, Alex_Brush } from 'next/font/google';
 import "./globals.css";
 import type { Metadata } from 'next';
 
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair',
-  weight: ['400', '700']
-});
-
-const montserrat = Montserrat({
-  subsets: ['latin'],
-  variable: '--font-montserrat',
-  weight: ['300', '400', '700']
-});
-
-const dancingScript = Dancing_Script({
-  subsets: ['latin'],
-  variable: '--font-dancing',
-  weight: ['400', '700']
-});
-
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ['latin'],
-  variable: '--font-cormorant',
-  weight: ['300', '400', '600', '700']
+  variable: '--font-serif',
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic']
+});
+
+const alexBrush = Alex_Brush({
+  subsets: ['latin'],
+  variable: '--font-cursive',
+  weight: ['400']
 });
 
 const IMAGES = [
@@ -44,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth">
-      <body className={`${playfair.variable} ${montserrat.variable} ${dancingScript.variable} ${cormorantGaramond.variable} font-montserrat antialiased min-h-screen overflow-x-hidden`}>
+      <body className={`${cormorantGaramond.variable} ${alexBrush.variable} font-serif antialiased min-h-screen overflow-x-hidden text-lg`}>
         {/* Shared Triptych Background */}
         <div className="triptych-container">
           {IMAGES.map((src, index) => (
@@ -62,17 +51,13 @@ export default function RootLayout({
 
         {/* Minimalist Header Logo */}
         <header className="fixed top-0 left-0 w-full p-4 sm:p-8 z-50 text-white pointer-events-none">
-          <div className="names-logo font-serif text-base sm:text-lg tracking-wider opacity-80">J&V</div>
+          <img src="/logojyv-Photoroom.png" alt="J&V Logo" className="w-8 h-8 sm:w-12 sm:h-12 object-contain opacity-90 drop-shadow-lg" />
         </header>
 
         <main className="relative z-10 w-full">
           {children}
         </main>
 
-        {/* Shared Footer */}
-        <footer className="fixed bottom-4 w-full text-center opacity-30 text-[10px] tracking-[0.5em] text-white uppercase z-50 pointer-events-none">
-          Juan & Vale 2026
-        </footer>
       </body>
     </html>
   );

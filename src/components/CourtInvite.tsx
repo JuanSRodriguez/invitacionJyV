@@ -56,24 +56,24 @@ export default function CourtInvite({ name, imageUrl, onAccept }: CourtInvitePro
 
                     {/* Header Label */}
                     <div className="mt-8 mb-4">
-                        <p className="font-cormorant text-[11px] sm:text-[13px] uppercase tracking-[0.4em] font-bold text-black/90">
+                        <p className="font-sans text-[11px] sm:text-[13px] uppercase tracking-[0.4em] font-bold text-black/90">
                             . Invitación Especial .
                         </p>
                     </div>
 
                     {/* Couple Names */}
                     <div className="mb-8 text-center">
-                        <h1 className="font-dancing text-5xl sm:text-6xl text-black leading-tight drop-shadow-sm">
+                        <h1 className="font-cursive text-5xl sm:text-6xl text-black leading-tight drop-shadow-sm">
                             Juan y Vale
                         </h1>
                     </div>
 
                     {/* Guest Message - MOVED UP */}
                     <div className="text-center space-y-4 mb-4 border-t border-black/10 pt-8 w-full px-4 text-black">
-                        <h2 className="font-cormorant text-[22px] sm:text-[26px] font-bold uppercase tracking-[0.1em]">
+                        <h2 className="font-sans text-[22px] sm:text-[26px] font-bold uppercase tracking-[0.1em]">
                             {name}
                         </h2>
-                        <p className="font-cormorant text-xs sm:text-sm italic leading-relaxed font-medium max-w-[280px] mx-auto">
+                        <p className="font-sans text-xs sm:text-sm italic leading-relaxed font-medium max-w-[280px] mx-auto">
                             &quot;Queremos que nos acompañen como nuestra Corte de Honor, siendo testigos de principio a fin de esta promesa de amor.&quot;
                         </p>
 
@@ -93,24 +93,20 @@ export default function CourtInvite({ name, imageUrl, onAccept }: CourtInvitePro
                     {/* Grid Info Section - MOVED DOWN */}
                     <div className="w-full border-t border-b border-black/20 py-5 grid grid-cols-[1fr_auto_1fr] items-center mb-8">
                         <div className="text-center px-4">
-                            <p className="font-cormorant text-[10px] uppercase tracking-widest text-black mb-1 font-bold">Viernes</p>
-                            <p className="font-cormorant text-3xl font-bold text-black">28</p>
-                            <p className="font-cormorant text-[10px] uppercase tracking-widest text-black">Agosto</p>
+                            <p className="font-sans text-[10px] uppercase tracking-widest text-black mb-1 font-bold">Viernes</p>
+                            <p className="font-sans text-3xl font-bold text-black">28</p>
+                            <p className="font-sans text-[10px] uppercase tracking-widest text-black">Agosto</p>
                         </div>
                         <div className="w-px h-16 bg-black/20" />
                         <div className="text-center px-4">
-                            <p className="font-cormorant text-[10px] uppercase tracking-widest text-black mb-1 font-bold">Nuestra</p>
-                            <p className="font-cormorant text-xl sm:text-2xl font-bold text-black leading-tight">Corte de Honor</p>
+                            <p className="font-sans text-[10px] uppercase tracking-widest text-black mb-1 font-bold">Nuestra</p>
+                            <p className="font-sans text-xl sm:text-2xl font-bold text-black leading-tight">Corte de Honor</p>
                         </div>
                     </div>
 
-                    {/* Location Info - MOVED DOWN */}
                     <div className="text-center space-y-2 mb-12">
-                        <p className="font-cormorant text-sm sm:text-base font-bold uppercase tracking-widest text-black">
+                        <p className="font-sans text-sm sm:text-base font-bold uppercase tracking-widest text-black">
                             Hacienda La Victoria
-                        </p>
-                        <p className="font-cormorant italic text-xs sm:text-sm text-black font-medium text-center">
-                            Subachoque, Cundinamarca . Vía Siberia
                         </p>
                     </div>
 
@@ -119,7 +115,7 @@ export default function CourtInvite({ name, imageUrl, onAccept }: CourtInvitePro
                         <button
                             ref={buttonRef}
                             onClick={onAccept}
-                            className="w-full max-w-[280px] border border-black text-black hover:bg-black hover:text-white font-cormorant text-[12px] sm:text-[14px] tracking-[0.4em] font-bold py-4 px-8 transition-all duration-300 uppercase shadow-sm"
+                            className="w-full max-w-[280px] border border-black text-black hover:bg-black hover:text-white font-serif text-[10px] sm:text-[12px] tracking-[0.3em] font-bold py-4 px-4 transition-all duration-300 uppercase shadow-sm whitespace-nowrap"
                         >
                             ACEPTO LA MISIÓN
                         </button>

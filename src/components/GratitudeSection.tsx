@@ -34,13 +34,13 @@ export default function GratitudeSection() {
 
             {/* Content Container */}
             <div className="max-w-2xl space-y-8 animate-fade-in relative z-30">
-                <h2 className="font-dancing text-5xl sm:text-7xl text-gold drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">¡Muchas Gracias!</h2>
+                <h2 className="font-cursive text-5xl sm:text-7xl text-gold drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">¡Muchas Gracias!</h2>
 
                 <div className="space-y-4 px-4">
-                    <p className="font-serif italic text-white text-xl sm:text-3xl leading-relaxed drop-shadow-md">
+                    <p className="font-sans italic text-white text-base sm:text-xl leading-relaxed drop-shadow-md">
                         &quot;Su presencia y cariño son el mejor regalo que podríamos recibir.&quot;
                     </p>
-                    <p className="font-serif italic text-white/90 text-lg sm:text-2xl leading-relaxed drop-shadow-md pb-4">
+                    <p className="font-sans italic text-white/90 text-sm sm:text-lg leading-relaxed drop-shadow-md pb-4">
                         Estamos ansiosos por celebrar este nuevo capítulo con todos ustedes.
                     </p>
                 </div>

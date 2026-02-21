@@ -18,19 +18,18 @@ export default function LocationSection() {
 
             <div className="max-w-4xl space-y-12 relative z-10">
                 <header className="space-y-4 sm:space-y-6">
-                    <p className="font-montserrat text-gold uppercase tracking-[0.4em] sm:tracking-[0.6em] text-[8px] sm:text-[10px] font-bold opacity-80">Ubicación</p>
-                    <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl text-white drop-shadow-lg leading-tight">El Lugar Mágico</h2>
+                    <p className="font-montserrat text-gold tracking-[0.4em] sm:tracking-[0.6em] text-[8px] sm:text-[10px] font-bold opacity-80">Ubicación</p>
+                    <h2 className="font-sans text-4xl sm:text-5xl md:text-6xl text-white drop-shadow-lg leading-tight">El lugar mágico</h2>
                     <div className="w-16 sm:w-24 h-px bg-gold mx-auto opacity-50" />
                 </header>
 
                 <div className="space-y-4 sm:space-y-6">
                     <div className="space-y-1 sm:space-y-2">
-                        <h3 className="font-serif text-2xl sm:text-3xl text-gold/90 italic">Hacienda La Victoria</h3>
-                        <p className="font-serif text-base sm:text-xl md:text-2xl text-white tracking-[0.2em] sm:tracking-[0.3em] uppercase opacity-90 drop-shadow-lg">Salón Garden</p>
+                        <h3 className="font-sans text-2xl sm:text-3xl text-gold/90 italic">Hacienda La Victoria</h3>
+                        <p className="font-sans text-base sm:text-xl md:text-2xl text-white tracking-[0.2em] sm:tracking-[0.3em] opacity-90 drop-shadow-lg">Salón Garden</p>
                     </div>
                     <p className="font-montserrat text-white/80 text-sm sm:text-lg tracking-wide font-light max-w-[280px] sm:max-w-lg mx-auto leading-relaxed">
-                        Tenjo, Cundinamarca<br />
-                        Vía Siberia - Tenjo
+                        Subachoque, Colombia
                     </p>
                 </div>
 

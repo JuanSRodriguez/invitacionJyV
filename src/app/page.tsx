@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import RSVPSection from '@/components/RSVPSection';
 import CourtInvite from '@/components/CourtInvite';
 import DressCode from '@/components/DressCode';
@@ -20,6 +20,45 @@ export default function Home() {
   const courtRef = useRef<HTMLDivElement>(null);
   const dressCodeRef = useRef<HTMLDivElement>(null);
   const locationRef = useRef<HTMLDivElement>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    // Preload audio
+    audioRef.current = new Audio('/Sé Parte de Nuestro Cuento.mp3');
+    audioRef.current.loop = true;
+    audioRef.current.volume = 0;
+
+    const handleVisibilityChange = () => {
+      if (typeof document !== 'undefined' && audioRef.current) {
+        if (document.visibilityState === 'hidden') {
+          audioRef.current.pause();
+        } else if (document.visibilityState === 'visible' && isOpened) {
+          // Only resume if the invitation has been opened
+          audioRef.current.play().catch(err => console.log("Audio resume blocked:", err));
+        }
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [isOpened]);
+
+  const handleMusicStart = () => {
+    if (audioRef.current) {
+      audioRef.current.play().catch(err => console.log("Audio playback blocked:", err));
+      let vol = 0;
+      const interval = setInterval(() => {
+        if (vol < 0.7) {
+          vol += 0.05;
+          if (audioRef.current) audioRef.current.volume = Math.min(vol, 0.7);
+        } else {
+          clearInterval(interval);
+        }
+      }, 100);
+    }
+  };
 
   const handleOpen = () => {
     setIsOpened(true);
@@ -53,7 +92,7 @@ export default function Home() {
   return (
     <div className="flex flex-col overflow-x-hidden">
       {/* Section 0: Landing Gate */}
-      {!isOpened && <LandingGate onOpen={handleOpen} />}
+      {!isOpened && <LandingGate onOpen={handleOpen} onMusicStart={handleMusicStart} />}
 
       <div className={`transition-all duration-1000 overflow-x-hidden`}>
         {/* Gratitude Modal */}
@@ -67,10 +106,10 @@ export default function Home() {
 
         {/* Section 1: Hero & RSVP */}
         <section className="min-h-[100svh] flex flex-col items-center justify-center text-center px-4 relative">
-          <div className="animate-fade-in flex flex-col items-center">
-            <h1 className="names-title !mb-0 font-bold text-white drop-shadow-2xl">Juan {'&'} Vale</h1>
-            <p className="event-details uppercase tracking-[0.3em] font-bold text-white/90 drop-shadow-lg">
-              28 de agosto de 2026 - Subachoque, Colombia
+          <div className="animate-fade-in flex flex-col items-center mt-12 sm:mt-20">
+            <h1 className="names-title font-cursive !mb-0 font-bold text-white drop-shadow-2xl">Juan y Vale</h1>
+            <p className="event-details uppercase tracking-[0.2em] sm:tracking-[0.3em] font-bold text-white/90 drop-shadow-lg text-[9px] sm:text-[11px] md:text-sm">
+              28 DE AGOSTO DE 2026 - SUBACHOQUE, COLOMBIA
             </p>
             <RSVPSection onValidated={handleValidated} onProceed={handleProceed} />
           </div>
