@@ -184,13 +184,14 @@ export default function DressCode() {
                                         <div className="text-center space-y-1">
                                             <p className="font-sans text-2xl sm:text-3xl md:text-4xl italic tracking-wide">Código de vestimenta</p>
                                             <p className="tracking-[0.2em] text-[8px] sm:text-[10px] font-bold opacity-80">
-                                                {selectedImage.includes('mujeres') ? 'Para las niñas' : 'Para los niños'}
+                                                {selectedImage.includes('mujeres') ? 'Para ellas' : 'Para ellos'}
                                             </p>
                                         </div>
 
                                         <div className="flex justify-center gap-2 sm:gap-4 py-1 sm:py-2">
                                             {selectedImage.includes('mujeres') ? (
                                                 <>
+                                                    <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-white shadow-md border border-[#4A3F35]/20 hover:scale-110 transition-transform"></div>
                                                     <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-[#A8B5A0] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
                                                     <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-[#839678] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
                                                     <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-[#5C7053] shadow-md border border-white/20 hover:scale-110 transition-transform"></div>
@@ -209,6 +210,7 @@ export default function DressCode() {
                                                 <div className="flex flex-col items-end gap-1.5 sm:gap-2 text-xs italic">
                                                     {selectedImage.includes('mujeres') ? (
                                                         <>
+                                                            <div className="flex items-center gap-2 text-[10px] sm:text-xs"><span>Blanco</span><div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-white border border-[#4A3F35]/10"></div></div>
                                                             <div className="flex items-center gap-2 text-[10px] sm:text-xs"><span>Verde oliva</span><div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#5C7053]"></div></div>
                                                             <div className="flex items-center gap-2 text-[10px] sm:text-xs"><span>Salvia</span><div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#839678]"></div></div>
                                                             <div className="flex items-center gap-2 text-[10px] sm:text-xs"><span>Eucalipto</span><div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#75866C]"></div></div>
@@ -226,13 +228,16 @@ export default function DressCode() {
                                                 <div>
                                                     <h4 className="font-bold text-[8px] sm:text-[10px] tracking-widest border-b border-[#4A3F35]/20 pb-1 mb-2">Su estilo</h4>
                                                     <p className="text-[10px] sm:text-xs leading-relaxed italic opacity-80 font-medium">
-                                                        {selectedImage.includes('mujeres') ? 'Vestido Mini Gala.' : 'Traje Mini Formal.'}<br />
+                                                        {selectedImage.includes('mujeres') ? 'Vestido mini gala.' : 'Traje mini formal.'}<br />
                                                         {selectedImage.includes('mujeres') ? 'Acorde al protocolo.' : 'Preferiblemente colores claros.'}
                                                     </p>
                                                 </div>
                                                 <div>
                                                     <h4 className="font-bold text-[8px] sm:text-[10px] tracking-widest border-b border-[#4A3F35]/20 pb-1 mb-2">El objetivo</h4>
-                                                    <p className="text-[10px] sm:text-xs leading-relaxed italic opacity-80 font-medium">Jugar y divertirse.<br />Estar cómodos.</p>
+                                                    <p className="text-[10px] sm:text-xs leading-relaxed italic opacity-80 font-medium">
+                                                        Jugar y divertirse.<br />
+                                                        {selectedImage.includes('mujeres') ? 'Estar cómodas.' : 'Estar cómodos.'}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -274,7 +279,7 @@ export default function DressCode() {
                                             <div className="space-y-4 sm:space-y-6 text-left font-sans">
                                                 <div>
                                                     <h4 className="font-bold text-[8px] sm:text-[10px] tracking-widest border-b border-[#4A3F35]/20 pb-1 mb-2">Reglamento</h4>
-                                                    <p className="text-[10px] sm:text-xs leading-relaxed italic opacity-80 font-medium">Traje Tan.<br />Camisa blanca.<br />Corbata verde.<br />Zapatos de vestir.</p>
+                                                    <p className="text-[10px] sm:text-xs leading-relaxed italic opacity-80 font-medium">Traje tan.<br />Camisa blanca.<br />Corbata verde.<br />Zapatos de vestir.</p>
                                                 </div>
                                                 <div>
                                                     <h4 className="font-bold text-[8px] sm:text-[10px] tracking-widest border-b border-[#4A3F35]/20 pb-1 mb-2">Misión</h4>

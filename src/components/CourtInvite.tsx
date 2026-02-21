@@ -117,7 +117,7 @@ export default function CourtInvite({ name, imageUrl, onAccept }: CourtInvitePro
                             onClick={onAccept}
                             className="w-full max-w-[280px] border border-black text-black hover:bg-black hover:text-white font-serif text-[10px] sm:text-[12px] tracking-[0.3em] font-bold py-4 px-4 transition-all duration-300 uppercase shadow-sm whitespace-nowrap"
                         >
-                            ACEPTO LA MISIÓN
+                            ACEPTAMOS LA MISIÓN
                         </button>
                     </div>
 
