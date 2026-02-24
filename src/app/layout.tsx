@@ -22,7 +22,7 @@ const IMAGES = [
 ];
 
 export const metadata: Metadata = {
-  title: "TOUR DE VIDA 2026 | J&V",
+  title: "Invitación Especial 2026 | J&V",
   description: "Únete a nuestra historia",
 };
 
