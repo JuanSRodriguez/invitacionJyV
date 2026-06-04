@@ -28,7 +28,7 @@ export const GUEST_PHOTOS: Record<string, string> = {
     'Juan, Aleja y Juanpa': '/JuanAleja.jpg',
     'Pipe y Nata': '/NataPIpe.jpg',
     'David, Lili, Sofi e Isa': '/DavidLili sofia isabella.jpg',
-    'Laura': '/Laura.jpg',
+    'Laura': '/Laura.png',
     'Santiago y Ximena': '/SantiagoXimena.png',
     'Tito': '/Tito.jpg'
 };
