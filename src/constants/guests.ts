@@ -7,6 +7,7 @@ export interface Guest {
     child?: string;
     childKeys?: string[];
     childPrefix?: string;
+    isSingular?: boolean;
 }
 
 export const GUESTS: Guest[] = [
@@ -16,9 +17,9 @@ export const GUESTS: Guest[] = [
     { formal: 'Juan, Aleja y Juanpa', husband: 'Juan', husbandKeys: ['juan', 'sebas', 'sebastian', 'juan sebastian'], wife: 'Aleja', wifeKeys: ['aleja', 'alejandra'], child: 'Juanpa', childKeys: ['juanpa'], childPrefix: 'tu hijo' },
     { formal: 'Pipe y Nata', husband: 'Pipe', husbandKeys: ['pipe', 'felipe'], wife: 'Nata', wifeKeys: ['nata', 'natalia'] },
     { formal: 'David, Lili, Sofi e Isa', husband: 'David', husbandKeys: ['david'], wife: 'Lili', wifeKeys: ['lili', 'liliana'], child: 'Sofi e Isa', childKeys: ['sofi', 'sofia', 'isa'], childPrefix: 'tus hijas' },
-    { formal: 'Laura', husband: 'Laura', husbandKeys: ['laura', 'laura gomez', 'laurga gomez', 'laurga'] },
+    { formal: 'Laura', husband: 'Laura', husbandKeys: ['laura', 'laura gomez', 'laurga gomez', 'laurga'], isSingular: true },
     { formal: 'Santiago y Ximena', husband: 'Santiago', husbandKeys: ['santiago', 'santi'], wife: 'Ximena', wifeKeys: ['ximena', 'xime'] },
-    { formal: 'Tito', husband: 'Tito', husbandKeys: ['tito', 'johanan'] }
+    { formal: 'Tito', husband: 'Tito', husbandKeys: ['tito', 'jhoanan'], isSingular: true }
 ];
 
 export const GUEST_PHOTOS: Record<string, string> = {

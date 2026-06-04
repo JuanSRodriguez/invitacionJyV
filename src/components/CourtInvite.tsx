@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { GUESTS } from '@/constants/guests';
 
 interface CourtInviteProps {
     name: string;
@@ -10,6 +11,8 @@ interface CourtInviteProps {
 }
 
 export default function CourtInvite({ name, imageUrl, onAccept }: CourtInviteProps) {
+    const guest = GUESTS.find(g => g.formal === name);
+    const isSingular = guest ? guest.isSingular : false;
     const [isButtonVisible, setIsButtonVisible] = useState(false);
     const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -74,7 +77,13 @@ export default function CourtInvite({ name, imageUrl, onAccept }: CourtInvitePro
                             {name}
                         </h2>
                         <p className="font-sans text-xs sm:text-sm italic leading-relaxed font-medium max-w-[280px] mx-auto">
-                            &quot;Queremos que nos acompañen como nuestra Corte de Honor, siendo testigos de principio a fin de esta promesa de amor.&quot;
+                            {isSingular ? (
+                                name === 'Laura' ?
+                                    `"Queremos que nos acompañes como parte de nuestra Corte de Honor, siendo testigo de principio a fin de esta promesa de amor."` :
+                                    `"Queremos que nos acompañes como parte de nuestra Corte de Honor, siendo testigo de principio a fin de esta promesa de amor."`
+                            ) : (
+                                `"Queremos que nos acompañen como nuestra Corte de Honor, siendo testigos de principio a fin de esta promesa de amor."`
+                            )}
                         </p>
 
                         {/* Scroll Indicator - Hidden when button is visible */}
@@ -117,7 +126,7 @@ export default function CourtInvite({ name, imageUrl, onAccept }: CourtInvitePro
                             onClick={onAccept}
                             className="w-full max-w-[280px] border border-black text-black hover:bg-black hover:text-white font-serif text-[10px] sm:text-[12px] tracking-[0.3em] font-bold py-4 px-4 transition-all duration-300 uppercase shadow-sm whitespace-nowrap"
                         >
-                            ACEPTAMOS LA MISIÓN
+                            {isSingular ? 'ACEPTO LA MISIÓN' : 'ACEPTAMOS LA MISIÓN'}
                         </button>
                     </div>
 

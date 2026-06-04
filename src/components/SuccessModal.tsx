@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { GUESTS } from '@/constants/guests';
 
 interface SuccessModalProps {
     name?: string;
@@ -7,6 +8,8 @@ interface SuccessModalProps {
 }
 
 export default function SuccessModal({ name, imageUrl, onClose }: SuccessModalProps) {
+    const guest = GUESTS.find(g => g.formal === name);
+    const isSingular = guest ? guest.isSingular : false;
     return (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/70 backdrop-blur-[6px] animate-fade-in">
             <div className="relative w-full max-w-lg bg-[#0d1a15] border border-[#d3c7b5] p-6 sm:p-12 rounded-[30px] sm:rounded-[40px] text-center space-y-8 sm:space-y-12 shadow-[0_40px_120px_rgba(0,0,0,0.4)] overflow-hidden group">
@@ -56,7 +59,7 @@ export default function SuccessModal({ name, imageUrl, onClose }: SuccessModalPr
                 <div className="space-y-4 sm:space-y-6 animate-fade-in-up relative z-30">
                     <div className="space-y-1 sm:space-y-2 text-black">
                         <p className="font-montserrat text-xs sm:text-sm md:text-lg font-black uppercase tracking-[0.2em] sm:tracking-[0.3em]">
-                            ¡LOS AMAMOS!
+                            {isSingular ? '¡TE AMAMOS!' : '¡LOS AMAMOS!'}
                         </p>
                         <p className="font-sans italic text-xl sm:text-[22px] md:text-[28px] font-bold tracking-wide leading-tight">
                             {name}
@@ -66,7 +69,11 @@ export default function SuccessModal({ name, imageUrl, onClose }: SuccessModalPr
                     <div className="w-12 sm:w-16 h-px bg-black/10 mx-auto" />
 
                     <p className="font-sans italic text-black font-medium text-sm sm:text-lg md:text-xl leading-relaxed max-w-[95%] sm:max-w-[90%] mx-auto px-2">
-                        &quot;Gracias por decir que sí, nos emociona mucho que sean parte de esto, no sería lo mismo sin ustedes&quot;
+                        {isSingular ? (
+                            `"Gracias por decir que sí, nos emociona mucho que seas parte de esto, no sería lo mismo sin ti"`
+                        ) : (
+                            `"Gracias por decir que sí, nos emociona mucho que sean parte de esto, no sería lo mismo sin ustedes"`
+                        )}
                     </p>
                 </div>
 

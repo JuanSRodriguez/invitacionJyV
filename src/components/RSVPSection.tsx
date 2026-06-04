@@ -122,6 +122,9 @@ export default function RSVPSection({ onValidated, onProceed }: RSVPSectionProps
         }, 1500);
     };
 
+    const guest = GUESTS.find(g => g.formal === name);
+    const isSingular = guest ? guest.isSingular : false;
+
     return (
         <div className="w-full max-w-md mt-8 sm:mt-12 p-6 sm:p-8 glass-card rounded-2xl animate-fade-in mx-auto">
             {status === 'idle' && (
@@ -188,8 +191,12 @@ export default function RSVPSection({ onValidated, onProceed }: RSVPSectionProps
                             </svg>
                         </div>
                         <div className="text-center mb-4 sm:mb-6">
-                            <h3 className="text-lg sm:text-xl font-bold font-serif text-black italic tracking-wider">¡Invitados VIP!</h3>
-                            <p className="text-[10px] sm:text-sm text-black mt-4 sm:mt-6 tracking-[0.1em] font-black leading-relaxed max-w-[250px] mx-auto">Están en nuestra lista de invitados especiales {name}</p>
+                            <h3 className="text-lg sm:text-xl font-bold font-serif text-black italic tracking-wider">
+                                {isSingular ? (name === 'Laura' ? '¡Invitada VIP!' : '¡Invitado VIP!') : '¡Invitados VIP!'}
+                            </h3>
+                            <p className="text-[10px] sm:text-sm text-black mt-4 sm:mt-6 tracking-[0.1em] font-black leading-relaxed max-w-[250px] mx-auto">
+                                {isSingular ? 'Estás' : 'Están'} en nuestra lista de invitados especiales {name}
+                            </p>
                         </div>
 
                         <button
